@@ -1,11 +1,12 @@
 import React from 'react';
+import TextField from '@mui/material'
 
 function FormularioCadastro() {
     return (
         <>
-            <h1>Componente formulario cad</h1>
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
         </>
-        );
+    );
 }
 
 export default FormularioCadastro;
