@@ -6,7 +6,6 @@ function FormularioCadastro() {
         <>
 
             <Container component="article" maxWidth="sm">
-                <h1>Formulário de Cadastro</h1>
                 <Typography variant="h3" component="h1" >Formulário de Cadastro</Typography>
                 <TextField id="nome" label="Nome" variant="outlined" color="secondary" fullWidth margin="normal" />
                 <TextField id="sobrenome" label="Sobrenome" variant="outlined" fullWidth margin="normal" />
