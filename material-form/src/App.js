@@ -5,13 +5,22 @@ import FormularioCadastro from './components/FormularioCadastro';
 function App() {
   return (
     <>
-      <FormularioCadastro aoEnviar={aoEnviarForm}></FormularioCadastro>
+      <FormularioCadastro aoEnviar={aoEnviarForm} validarCpf={validarCpf}></FormularioCadastro>
     </>
   );
 }
 
-function aoEnviarForm(dados){
+function aoEnviarForm(dados) {
   console.log(dados);
+}
+
+function validarCpf(cpf) {
+  if (cpf.length !== 11) {
+    return { valido: false, texto: 'CPF deve ter 11 dígitos' }
+  }
+  else {
+    return { valido: true, texto: '' }
+  }
 }
 
 export default App;
