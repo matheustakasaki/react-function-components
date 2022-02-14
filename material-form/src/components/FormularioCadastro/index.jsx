@@ -7,7 +7,7 @@ function FormularioCadastro() {
     let [sobrenome, setSobrenome] = useState('')
     let [cpf, setCpf] = useState('')
     let [promocoes, setPromocoes] = useState(true)
-    let [novidade, setNovidade] = useState(true)
+    let [novidades, setNovidades] = useState(true)
     return (
         <>
 
@@ -42,13 +42,13 @@ function FormularioCadastro() {
                     }
                     } label="cpf" variant="outlined" fullWidth margin="normal" />
 
-                    <FormControlLabel onChange={(event) => {
+                    <FormControlLabel label="Promoções" control={<Switch checked={promocoes} onChange={(event) => {
                         setPromocoes(event.target.checked)
-                    }} label="Promoções" control={<Switch name="promocoes" defaultChecked={promocoes} ></Switch>} />
+                    }} name="promocoes" defaultChecked={promocoes} ></Switch>} />
 
-                    <FormControlLabel onChange={(event) => {
+                    <FormControlLabel label="Novidades" control={<Switch checked={novidades} onChange={(event) => {
                         setNovidades(event.target.checked)
-                    }} label="Novidades" control={<Switch name="novidades" defaultChecked={novidades} ></Switch>} />
+                    }} name="novidades" defaultChecked={novidades} ></Switch>} />
 
                     <Button type="submit" variant="contained" color="primary">Cadastrar</Button>
 
