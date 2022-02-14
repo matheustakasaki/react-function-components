@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Switch, FormControlLabel, Typography } from '@mui/material'
 
-function FormularioCadastro({aoEnviar}) {
+function FormularioCadastro({ aoEnviar }) {
 
     let [nome, setNome] = useState('')
     let [sobrenome, setSobrenome] = useState('')
     let [cpf, setCpf] = useState('')
     let [promocoes, setPromocoes] = useState(true)
     let [novidades, setNovidades] = useState(true)
+
+    const [erros, setErros] = useState({ cpf: { valido: true, texto: '' } })
     return (
         <>
 
@@ -35,11 +37,9 @@ function FormularioCadastro({aoEnviar}) {
                     }
                     } label="Sobrenome" variant="outlined" fullWidth margin="normal" />
 
-                    <TextField id="cpf" value={cpf} onChange={(event) => {
-
-                        setCpf(event.target.value)
-                    }
-                    } label="cpf" variant="outlined" fullWidth margin="normal" />
+                    <TextField id="cpf" error={!erros.cpf.valido} helperText={erros.cpf.texto} value={cpf} onC  hange={(event) => { setCpf(event.target.value) }}
+                        onBlur={(event) => { setErros({ cpf: { valido: false, texto: 'CPF deve ter 11 dígitos' } }) }}
+                        label="cpf" variant="outlined" fullWidth margin="normal" />
 
                     <FormControlLabel label="Promoções" control={<Switch checked={promocoes} onChange={(event) => {
                         setPromocoes(event.target.checked)
