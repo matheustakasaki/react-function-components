@@ -5,9 +5,13 @@ import FormularioCadastro from './components/FormularioCadastro';
 function App() {
   return (
     <>
-      <FormularioCadastro></FormularioCadastro>
+      <FormularioCadastro aoEnviar={aoEnviarForm}></FormularioCadastro>
     </>
   );
+}
+
+function aoEnviarForm(dados){
+  console.log(dados);
 }
 
 export default App;
