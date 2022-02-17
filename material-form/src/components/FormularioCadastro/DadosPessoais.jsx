@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Switch, FormControlLabel, Typography } from '@mui/material'
+import { TextField, Button, Switch, FormControlLabel } from '@mui/material'
 
 function DadosPessoais({ aoEnviar, validarCpf }) {
 
@@ -13,51 +13,48 @@ function DadosPessoais({ aoEnviar, validarCpf }) {
     return (
         <>
 
-            <Container component="article" maxWidth="sm">
-                <Typography variant="h3" component="h1" >Formulário de Cadastro</Typography>
 
-                <form onSubmit={(event) => {
-                    event.preventDefault();
-                    aoEnviar({ nome, sobrenome, cpf, novidades, promocoes })
-                }}>
-                    <TextField id="nome" value={nome} onChange={(event) => {
-                        let tmpNome = event.target.value;
+            <form onSubmit={(event) => {
+                event.preventDefault();
+                aoEnviar({ nome, sobrenome, cpf, novidades, promocoes })
+            }}>
+                <TextField id="nome" value={nome} onChange={(event) => {
+                    let tmpNome = event.target.value;
 
-                        if (tmpNome.length >= 3) {
-                            tmpNome = tmpNome.substr(0, 3)
+                    if (tmpNome.length >= 3) {
+                        tmpNome = tmpNome.substr(0, 3)
 
-                        }
-                        setNome(tmpNome)
                     }
-                    } label="Nome" color="secondary" variant="outlined"  fullWidth margin="normal" />
+                    setNome(tmpNome)
+                }
+                } label="Nome" color="secondary" variant="outlined" fullWidth margin="normal" />
 
-                    <TextField id="sobrenome" value={sobrenome} onChange={(event) => {
+                <TextField id="sobrenome" value={sobrenome} onChange={(event) => {
 
-                        setSobrenome(event.target.value)
-                    }
-                    } label="Sobrenome" variant="outlined" fullWidth margin="normal" />
+                    setSobrenome(event.target.value)
+                }
+                } label="Sobrenome" variant="outlined" fullWidth margin="normal" />
 
-                    <TextField id="cpf" error={!erros.cpf.valido} helperText={erros.cpf.texto} value={cpf} onChange={(event) => { setCpf(event.target.value) }}
-                        onBlur={(event) => {
-                            const ehValido = validarCpf(cpf);
-                            setErros({ cpf: ehValido })
-                        }}
-                        label="cpf" variant="outlined" fullWidth margin="normal" />
+                <TextField id="cpf" error={!erros.cpf.valido} helperText={erros.cpf.texto} value={cpf} onChange={(event) => { setCpf(event.target.value) }}
+                    onBlur={(event) => {
+                        const ehValido = validarCpf(cpf);
+                        setErros({ cpf: ehValido })
+                    }}
+                    label="cpf" variant="outlined" fullWidth margin="normal" />
 
-                    <FormControlLabel label="Promoções" control={<Switch checked={promocoes} onChange={(event) => {
-                        setPromocoes(event.target.checked)
-                    }} name="promocoes"></Switch>} />
+                <FormControlLabel label="Promoções" control={<Switch checked={promocoes} onChange={(event) => {
+                    setPromocoes(event.target.checked)
+                }} name="promocoes"></Switch>} />
 
-                    <FormControlLabel label="Novidades" control={<Switch checked={novidades} onChange={(event) => {
-                        setNovidades(event.target.checked)
-                    }} name="novidades" ></Switch>} />
+                <FormControlLabel label="Novidades" control={<Switch checked={novidades} onChange={(event) => {
+                    setNovidades(event.target.checked)
+                }} name="novidades" ></Switch>} />
 
-                    <Button type="submit" variant="contained" color="primary">Cadastrar</Button>
+                <Button type="submit" variant="contained" color="primary">Cadastrar</Button>
 
-                </form>
+            </form>
 
 
-            </Container>
         </>
     );
 }
