@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import FormularioCadastro from './components/FormularioCadastro';
+import FormularioCadastro from './components/FormularioCadastro/FormularioCadastro';
 
 function App() {
   return (
