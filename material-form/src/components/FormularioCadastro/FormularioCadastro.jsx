@@ -9,10 +9,13 @@ function FormularioCadastro({ aoEnviar, validarCpf }) {
     const [etapaAtual, setEtapaAtual] = useState(0)
 
 
+    function proximo() {
+        setEtapaAtual(etapaAtual + 1)
+    }
     function formularioAtual(etapa) {
         switch (etapa) {
             case 0:
-                return <DadosUsuario />;
+                return <DadosUsuario aoEnviar={proximo} />;
             case 1:
                 return <DadosPessoais aoEnviar={aoEnviar} validarCpf={validarCpf} />
             case 2:
