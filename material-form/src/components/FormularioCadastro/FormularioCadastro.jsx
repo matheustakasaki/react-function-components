@@ -22,8 +22,8 @@ function FormularioCadastro({ aoEnviar, validarCpf }) {
         <>
             <Container component="article" maxWidth="sm">
                 <Typography variant="h3" component="h1" >Formulário de Cadastro</Typography>
-                
-                { formularios[etapaAtual] }
+
+                {formularios[etapaAtual]}
 
             </Container>
         </>
