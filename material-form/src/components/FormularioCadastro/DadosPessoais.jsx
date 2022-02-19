@@ -27,7 +27,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
                 event.preventDefault();
                 aoEnviar({ nome, sobrenome, cpf, novidades, promocoes })
             }}>
-                <TextField id="nome" value={nome} onChange={(event) => {
+                <TextField id="nome" name="nome" value={nome} onChange={(event) => {
                     let tmpNome = event.target.value;
 
                     if (tmpNome.length >= 3) {
@@ -38,7 +38,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
                 }
                 } label="Nome" color="secondary" variant="outlined" fullWidth margin="normal" />
 
-                <TextField id="sobrenome" value={sobrenome} onChange={(event) => {
+                <TextField id="sobrenome" name="sobrenome" value={sobrenome} onChange={(event) => {
 
                     setSobrenome(event.target.value)
                 }
@@ -48,11 +48,11 @@ function DadosPessoais({ aoEnviar, validacoes }) {
                     onBlur={validarCampos}
                     label="cpf" variant="outlined" fullWidth margin="normal" />
 
-                <FormControlLabel label="Promoções" control={<Switch checked={promocoes} onChange={(event) => {
+                <FormControlLabel name="promocoes" label="Promoções" control={<Switch checked={promocoes} onChange={(event) => {
                     setPromocoes(event.target.checked)
                 }} name="promocoes"></Switch>} />
 
-                <FormControlLabel label="Novidades" control={<Switch checked={novidades} onChange={(event) => {
+                <FormControlLabel name="novidades" label="Novidades" control={<Switch checked={novidades} onChange={(event) => {
                     setNovidades(event.target.checked)
                 }} name="novidades" ></Switch>} />
 
