@@ -9,7 +9,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
     let [promocoes, setPromocoes] = useState(true)
     let [novidades, setNovidades] = useState(true)
 
-    const [erros, setErros] = useState({ cpf: { valido: true, texto: '' } })
+    const [erros, setErros] = useState({ cpf: { valido: true, texto: '' }, nome: { valido: true, texto: '' } })
 
     function validarCampos(e) {
         const { name, value } = e.target
@@ -19,15 +19,26 @@ function DadosPessoais({ aoEnviar, validacoes }) {
         setErros(novoEstado)
 
     }
+
+    function possoEnviar() {
+
+        for (let campo in erros) {
+            if (!erros[campo].valido) {
+
+                return false
+            }
+        }
+        return true;
+    }
     return (
         <>
-
-
             <form onSubmit={(event) => {
                 event.preventDefault();
-                aoEnviar({ nome, sobrenome, cpf, novidades, promocoes })
+                if (possoEnviar()) {
+                    aoEnviar({ nome, sobrenome, cpf, novidades, promocoes })
+                }
             }}>
-                <TextField id="nome" name="nome" value={nome} onChange={(event) => {
+                <TextField  onBlur={validarCampos} error={!erros.nome.valido} helperText={erros.nome.texto} id="nome" name="nome" value={nome} onChange={(event) => {
                     let tmpNome = event.target.value;
 
                     if (tmpNome.length >= 3) {
@@ -56,7 +67,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
                     setNovidades(event.target.checked)
                 }} name="novidades" ></Switch>} />
 
-                <Button type="submit" variant="contained" color="primary">Cadastrar</Button>
+                <Button type="submit" variant="contained" color="primary">Próximo</Button>
 
             </form>
 
