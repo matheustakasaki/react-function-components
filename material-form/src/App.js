@@ -1,11 +1,12 @@
 import './App.css';
 import React from 'react';
 import FormularioCadastro from './components/FormularioCadastro/FormularioCadastro';
+import { validarCpf, validarSenha } from './models/cadastro';
 
 function App() {
   return (
     <>
-      <FormularioCadastro aoEnviar={aoEnviarForm} validarCpf={validarCpf}></FormularioCadastro>
+      <FormularioCadastro aoEnviar={aoEnviarForm} validacoes={{ cpf: validarCpf, senha: validarSenha }}></FormularioCadastro>
     </>
   );
 }
@@ -14,13 +15,6 @@ function aoEnviarForm(dados) {
   console.log(dados);
 }
 
-function validarCpf(cpf) {
-  if (cpf.length !== 11) {
-    return { valido: false, texto: 'CPF deve ter 11 dígitos' }
-  }
-  else {
-    return { valido: true, texto: '' }
-  }
-}
+
 
 export default App;

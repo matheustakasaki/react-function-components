@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Switch, FormControlLabel } from '@mui/material'
 
-function DadosPessoais({ aoEnviar, validarCpf }) {
+function DadosPessoais({ aoEnviar, validacoes }) {
 
     let [nome, setNome] = useState('')
     let [sobrenome, setSobrenome] = useState('')
@@ -10,6 +10,15 @@ function DadosPessoais({ aoEnviar, validarCpf }) {
     let [novidades, setNovidades] = useState(true)
 
     const [erros, setErros] = useState({ cpf: { valido: true, texto: '' } })
+
+    function validarCampos(e) {
+        const { name, value } = e.target
+        const novoEstado = { ...erros }
+        novoEstado[name] = validacoes[name](value);
+
+        setErros(novoEstado)
+
+    }
     return (
         <>
 
@@ -35,11 +44,8 @@ function DadosPessoais({ aoEnviar, validarCpf }) {
                 }
                 } label="Sobrenome" variant="outlined" fullWidth margin="normal" />
 
-                <TextField id="cpf" error={!erros.cpf.valido} helperText={erros.cpf.texto} value={cpf} onChange={(event) => { setCpf(event.target.value) }}
-                    onBlur={(event) => {
-                        const ehValido = validarCpf(cpf);
-                        setErros({ cpf: ehValido })
-                    }}
+                <TextField id="cpf" error={!erros.cpf.valido} helperText={erros.cpf.texto} name="cpf" value={cpf} onChange={(event) => { setCpf(event.target.value) }}
+                    onBlur={validarCampos}
                     label="cpf" variant="outlined" fullWidth margin="normal" />
 
                 <FormControlLabel label="Promoções" control={<Switch checked={promocoes} onChange={(event) => {
