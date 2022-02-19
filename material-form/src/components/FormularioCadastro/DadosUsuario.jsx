@@ -11,7 +11,7 @@ function DadosUsuario({ aoEnviar }) {
     const validacoes = useContext(ValidacoesCadastro)
     function validarCampos(e) {
         const { name, value } = e.target
-        const novoEstado = { ...erros }
+        const novoEstado = { ...erros };
         novoEstado[name] = validacoes[name](value);
 
         setErros(novoEstado)
