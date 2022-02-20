@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+
+// Criando hook customizado
+// é necessário que o nome do hook comece com 'use'
 function useErros(validacoes) {
 
     const estadoInicial = criarEstadoInicial(validacoes)
