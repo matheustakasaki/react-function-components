@@ -31,6 +31,8 @@ function useErros(validacoes) {
     return [erros, validarCampos, possoEnviar]
 }
 
+// função para criar estado inicial aos componentes e possibilitar que seja alterado depois
+
 function criarEstadoInicial(validacoes) {
     const estadoInicial = {}
     for (let campo in validacoes) {
