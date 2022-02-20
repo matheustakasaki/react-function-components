@@ -9,6 +9,8 @@ function DadosUsuario({ aoEnviar }) {
     const validacoes = useContext(ValidacoesCadastro)
     const [erros, validarCampos, possoEnviar] = useErros(validacoes);
 
+
+    // Este componente está com erro no campo de senha
     return (
         <>
             <form onSubmit={(event) => {
