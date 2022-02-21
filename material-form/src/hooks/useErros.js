@@ -42,4 +42,5 @@ function criarEstadoInicial(validacoes) {
     return estadoInicial
 }
 
+// Exportando hook para ser usado em outros arquivos
 export default useErros
